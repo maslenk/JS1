@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Урок 2. Задание 5 и 6</title>
+</head>
+<body>
+	<script>
+		//Задание 5
+		function sum(a,b){
+			return a+b;
+		}
+		function diff(a,b){
+			return a-b;
+		}
+		function mult(a,b){
+			return a*b;
+		}
+		function div(a,b){
+			if (b != 0) {
+				var c = a/b;
+			}
+				else {
+					alert ("На 0 делить нельзя!!!");
+
+				}
+			return c;
+		}
+		var a= +prompt ("Введите любое значеие переменной A");
+		var b= +prompt ("Введите любое значеие переменной B");
+		
+		alert ("Сумма A и B = "+ sum(a,b));
+		alert ("Разница A и B = "+ diff(a,b));
+		alert ("Умножение A и B ="+ mult(a,b));
+		alert ("Деление A на B = "+ div(a,b));
+		
+		//Задание 6
+		var c;
+		function mathOperation(arg1, arg2, operation){
+			switch (operation) {
+				case "sum":
+					c=sum(arg1,arg2);
+					break;
+				case "diff":
+					c=diff(arg1,arg2);
+					break;
+				case "mult":
+					c=mult(arg1,arg2);
+					break;
+				case "div":
+					c=div(arg1,arg2);
+					break;
+				default:
+					alert ("такую операцию я сделать не могу!");
+			}
+			return c;
+		}
+		var arg1 = +prompt ("Введите значение аргумента arg1");
+		var arg2 = +prompt ("Введите значение аргумента arg2");
+		var operation = prompt ("Какую опреацию Вы хотите сделать? \nsum - сложение \ndiff - вычетание \nmult - умножение \ndiv - деление");
+		alert (mathOperation(arg1, arg2, operation));
+	</script>
+</body>
+</html>
