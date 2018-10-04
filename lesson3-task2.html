@@ -7,7 +7,21 @@
 <body>
 	<script>
 		var i=0;
-		for (i; i <= 10; document.write (i+ ", "))
+		do {
+			if (i != 0) {
+				if (i%2 != 0) {
+					document.write (i+ "- нечетное число <br>");
+				}
+				else {
+					document.write (i+ "- четное  число <br>");
+				}
+			}
+			else {
+				document.write (i+ "- это ноль <br>");
+			}
+			i++;	
+		} 
+		while (i<=10);
 	</script>
 </body>
 </html>
