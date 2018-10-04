@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var i=1;
+		var j=2;
+		var c=j;
+		while (i<=100) {
+			if (i != 1) {
+				while (j<i) {
+					if (i%j==0) {
+						j++;
+					}
+					else {
+						j++;
+						c++;
+					}	
+				}
+				if (c==j) {
+				document.write (i+ ", ");
+				}
+			}
+			else {
+				document.write (i+ ", ");
+			}
+			i++;
+			j=2;
+			c=j;
+		}
+	</script>
+</body>
+</html>
