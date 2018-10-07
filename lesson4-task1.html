@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Урок 4. Задание 1</title>
+</head>
+<body>
+	<script>
+		var object = {};
+		//console.log (object);
+		var number = prompt('Введите число от 0 до 999');
+		function numberToObject () {
+			var number2 = +number;
+			if (number2 < 0) {
+				console.log ("Вы ввели отрицательное число" + object);
+			}
+			else if (number.length > 3) {
+				console.log ("Вы ввели слишком большое число" + object);
+			} 
+			else {
+				object.num1 = number[2];
+				object.num2 = number[1];
+				object.num3 = number[0];
+				document.write ("единицы: " + object.num1 + "<br>" + "десятки: " + object.num2 + "<br>" + "сотни: " + object.num3);
+			}
+		}
+		numberToObject ();
+	</script>
+</body>
+</html>
