@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Шахматнрая доска</title>
+	<link rel="stylesheet" href="./styles/style.css">
+	<!--script src="chess.js"></script-->
+</head>
+<body>
+	<div id="conteiner">
+		
+	</div>
+	<script>
+		var chessBoard = document.getElementById("conteiner");
+		var i = 1, j = 1;
+		for (j; j<=8; j++) {
+			if (j%2 != 0) {
+				for (i; i<=8;i++) {
+					var cell = document.createElement('div');
+					chessBoard.appendChild(cell);
+  					cell.classList.add("white");
+  					if (i%2 == 0) {
+  						cell.classList.add("black");  
+  					}	
+				}
+			} 
+			else {
+				for (i; i<=8;i++) {
+					console.log (i);
+					var cell = document.createElement('div');
+					chessBoard.appendChild(cell);
+  					cell.classList.add("black1");
+  					if (i%2 == 0) {
+  						cell.classList.add("white1");  
+  					}
+				}
+
+			}
+			
+			i=1;
+		}	
+	</script>
+</body>
+</html>
