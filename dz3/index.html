@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="./style.css">
+	<title>Урок 6. Задание 3</title>
+</head>
+<body>
+	<div class="conteiner">
+		<div id="smallphoto">
+
+		</div>
+		<div id="bigphoto">
+			
+		</div>
+	</div>
+
+	<script>
+		//Создаем массивы с фотографиями
+		var smallPhoto = ["./smallphoto/smallphoto-1.jpg", "./smallphoto/smallphoto-2.jpg", "./smallphoto/smallphoto-3.jpg", "./smallphoto/smallphoto-4.jpg"];
+
+		//Создаем галерею из миниатюр
+		var sp = document.getElementById("smallphoto");
+		for (var i = 0; i < smallPhoto.length; i++) {
+			var photo=document.createElement("img");
+			photo.src = smallPhoto[i];
+			photo.id="image-"+(i+1);
+			sp.appendChild(photo);
+		}
+
+		//Код из методички
+		function init(){
+		var images = document.getElementsByTagName("img");
+		for (var i = 0; i < images.length; i++) {
+			images[i].onclick = changeBigPicture;
+		}
+		}
+		function changeBigPicture(eventObj){
+		var appDiv = document.getElementById("bigphoto");
+		appDiv.innerHTML = "";
+		var eventElement = eventObj.target;
+		var imageNameParts = eventElement.id.split("-");
+		var src = "./bigphoto/bigphoto-" + imageNameParts[1] + ".jpg";
+		var imageDomElement = document.createElement("img");
+		imageDomElement.src = src;
+		imageDomElement.className = "bigphoto";
+		appDiv.appendChild(imageDomElement);
+		
+		//проверка наличия картинки по указанному в src адресу.
+		imageDomElement.onerror = function() {
+			imageDomElement.src = "./bigphoto/error.jpg";
+			appDiv.appendChild(imageDomElement);
+	 		alert( "Ошибка: " + this.src); 
+		}
+
+		//Добавляем стрелки под большую картинку
+		function arrowFunction () {
+			var arrow = document.createElement("div");
+		arrow.id = "arrow";
+		appDiv.appendChild(arrow);
+		var leftArrow = document.createElement("img");
+		leftArrow.src = "./img/strelka-vlevo.jpg";
+		leftArrow.id = "leftarrow";
+		arrow.appendChild(leftArrow);
+		var rightArrow = document.createElement("img");
+		rightArrow.src = "./img/strelka-vpravo.jpg";
+		rightArrow.id = "rightarrow";
+		arrow.appendChild(rightArrow);
+		leftArrow.onclick = function() {
+			document.getElementById("leftarrow");
+			appDiv.innerHTML = "";
+			switch (src) {
+				case "./bigphoto/bigphoto-1.jpg": 
+					appDiv.innerHTML = "";
+					src = "./bigphoto/error.jpg";
+					imageDomElement = document.createElement("img");
+					imageDomElement.src = src;
+					imageDomElement.className = "bigphoto";
+					appDiv.appendChild(imageDomElement);
+					arrowFunction ();
+					break;
+				case "./bigphoto/bigphoto-2.jpg":
+					src = "./bigphoto/bigphoto-1.jpg";
+					imageDomElement = document.createElement("img");
+					imageDomElement.src = src;
+					imageDomElement.className = "bigphoto";
+					appDiv.appendChild(imageDomElement);
+					arrowFunction ();
+					break;
+				case "./bigphoto/bigphoto-3.jpg":
+					src = "./bigphoto/bigphoto-2.jpg";
+					imageDomElement = document.createElement("img");
+					imageDomElement.src = src;
+					imageDomElement.className = "bigphoto";
+					appDiv.appendChild(imageDomElement);
+					arrowFunction ();
+					break;
+				case "./bigphoto/error.jpg":
+					src = "./bigphoto/bigphoto-3.jpg";
+					imageDomElement = document.createElement("img");
+					imageDomElement.src = src;
+					imageDomElement.className = "bigphoto";
+					appDiv.appendChild(imageDomElement);
+					arrowFunction ();
+					break;
+			}
+			
+			}
+			rightArrow.onclick = function() {
+			document.getElementById("rightarrow");
+			appDiv.innerHTML = "";
+			switch (src) {
+				case "./bigphoto/bigphoto-1.jpg": 
+					appDiv.innerHTML = "";
+					src = "./bigphoto/bigphoto-2.jpg";
+					imageDomElement = document.createElement("img");
+					imageDomElement.src = src;
+					imageDomElement.className = "bigphoto";
+					appDiv.appendChild(imageDomElement);
+					arrowFunction ();
+					break;
+				case "./bigphoto/bigphoto-2.jpg":
+					src = "./bigphoto/bigphoto-3.jpg";
+					imageDomElement = document.createElement("img");
+					imageDomElement.src = src;
+					imageDomElement.className = "bigphoto";
+					appDiv.appendChild(imageDomElement);
+					arrowFunction ();
+					break;
+				case "./bigphoto/bigphoto-3.jpg":
+					src = "./bigphoto/error.jpg";
+					imageDomElement = document.createElement("img");
+					imageDomElement.src = src;
+					imageDomElement.className = "bigphoto";
+					appDiv.appendChild(imageDomElement);
+					arrowFunction ();
+					break;
+				case "./bigphoto/error.jpg":
+					src = "./bigphoto/bigphoto-1.jpg";
+					imageDomElement = document.createElement("img");
+					imageDomElement.src = src;
+					imageDomElement.className = "bigphoto";
+					appDiv.appendChild(imageDomElement);
+					arrowFunction ();
+					break;
+			}
+			
+			}
+		return;
+		}
+		arrowFunction ();
+
+		}
+		
+
+
+
+		window.onload = init;
+
+	</script>
+</body>
+</html>

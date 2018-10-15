@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="./style.css">
+	<title>Урок 6. Задание 1</title>
+</head>
+<body>
+	<div class="conteiner">
+		<div id="smallphoto">
+
+		</div>
+		<div id="bigphoto">
+			
+		</div>
+	</div>
+
+	<script>
+		//Создаем массивы с фотографиями
+		var smallPhoto = ["./smallphoto/smallphoto-1.jpg", "./smallphoto/smallphoto-2.jpg", "./smallphoto/smallphoto-3.jpg", "./smallphoto/smallphoto-4.jpg"];
+
+		//Создаем галерею из миниатюр
+		var sp = document.getElementById("smallphoto");
+		for (var i = 0; i < smallPhoto.length; i++) {
+			var photo=document.createElement("img");
+			photo.src = smallPhoto[i];
+			photo.id="image-"+(i+1);
+			sp.appendChild(photo);
+		}
+
+		//Код из методички
+		function init(){
+		var images = document.getElementsByTagName("img");
+		for (var i = 0; i < images.length; i++) {
+			images[i].onclick = changeBigPicture;
+		}
+		}
+		function changeBigPicture(eventObj){
+		var appDiv = document.getElementById("bigphoto");
+		appDiv.innerHTML = "";
+		var eventElement = eventObj.target;
+		var imageNameParts = eventElement.id.split("-");
+		var src = "./bigphoto/bigphoto-" + imageNameParts[1] + ".jpg";
+		var imageDomElement = document.createElement("img");
+		imageDomElement.src = src;
+		appDiv.appendChild(imageDomElement);
+		
+		//проверка наличия картинки по указанному в src адресу.
+		imageDomElement.onerror = function() {
+			imageDomElement.src = "./bigphoto/error.jpg";
+			appDiv.appendChild(imageDomElement);
+	 		alert( "Ошибка: " + this.src); 
+		}
+		}
+		window.onload = init;
+
+	</script>
+</body>
+</html>

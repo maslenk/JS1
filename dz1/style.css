@@ -1,0 +1,23 @@
+.conteiner {
+	width: 100%;
+	height: 100%;
+}
+#smallphoto {
+	width: 100%;
+	height: 50%;
+	display: flex;
+	justify-content: space-around;
+}
+#smallphoto img {
+	width: 200px;
+	height: 150px;
+}
+#bigphoto {
+	width: 100%;
+	height: 50%;
+}
+#bigphoto img {
+	display: block;
+	margin: 50px auto;
+	width: 1000px;
+}
